@@ -10,13 +10,6 @@ import (
 
 func handleForm(w http.ResponseWriter, r *http.Request) {
 
-	if r.Header.Get("Content-Type") != "multipart/form-data" {
-		w.WriteHeader(http.StatusBadRequest)
-		log.Println("Wrong Content-Type")
-		fmt.Fprintf(w, "Wrong Content-Type")
-		return
-	}
-
 	// Store at most 10MB in Memory
 	r.ParseMultipartForm(10 << 20)
 
@@ -36,13 +29,14 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	// Create a file to write the upload to
-	upload, err := ioutil.TempFile("uploads", "program-*.txt")
+	upload, err := ioutil.TempFile("", "program-*.txt")
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Error creating file")
 		return
 	}
+	log.Println(upload.Name())
 	defer upload.Close()
 
 	// Read the upload to a byte array
