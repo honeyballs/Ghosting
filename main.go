@@ -10,6 +10,13 @@ import (
 
 func handleForm(w http.ResponseWriter, r *http.Request) {
 
+	if r.Header.Get("Content-Type") != "multipart/form-data" {
+		w.WriteHeader(http.StatusBadRequest)
+		log.Println("Wrong Content-Type")
+		fmt.Fprintf(w, "Wrong Content-Type")
+		return
+	}
+
 	// Store at most 10MB in Memory
 	r.ParseMultipartForm(10 << 20)
 
