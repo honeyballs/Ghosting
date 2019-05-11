@@ -29,7 +29,7 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	// Create a file to write the upload to
-	upload, err := ioutil.TempFile("", "program-*.txt")
+	upload, err := ioutil.TempFile("uploads", "program-*.txt")
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
