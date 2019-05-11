@@ -36,7 +36,7 @@ function submitForm() {
     // Build the request
     const request = new XMLHttpRequest()
     request.onerror = err => console.log(err)
-    request.upload.onprogress = prog => setProgress(Math.round(100/prog.total * prog.loaded))
+    request.onprogress = prog => setProgress(Math.round(100/prog.total * prog.loaded))
     request.onabort = () => console.log("Submit cancelled")
 
     // Display the progress bar
