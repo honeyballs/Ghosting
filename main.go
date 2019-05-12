@@ -57,7 +57,7 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintf(w, "Working route")
+	fmt.Fprintf(w, "File uploaded successfully")
 }
 
 func main() {

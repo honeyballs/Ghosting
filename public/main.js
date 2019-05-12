@@ -6,11 +6,11 @@ function setButtonEnabled(enabled) {
 
 function setProgressBarVisible(visible) {
     const prog = document.getElementsByTagName("progress")[0]
-    visible ? prog.classList.add("invisible") : prog.classList.remove("invisible")
+    visible ? prog.classList.remove("invisible") : prog.classList.add("invisible")
 }
 
 function setProgress(percent) {
-    document.getElementsByTagName("progress").value = percent
+    document.getElementsByTagName("progress")[0].value = percent
 }
 
 function fileChange() {    
@@ -19,7 +19,7 @@ function fileChange() {
 
     setButtonEnabled(true)
     setProgress(0)
-    setProgressBarVisible(false)
+    setProgressBarVisible(true)
 }
 
 function submitForm() {
@@ -36,11 +36,9 @@ function submitForm() {
     // Build the request
     const request = new XMLHttpRequest()
     request.onerror = err => console.log(err)
-    request.onprogress = prog => setProgress(Math.round(100/prog.total * prog.loaded))
+    request.onprogress = prog => setProgress(Math.round(prog.total/prog.loaded * 100))
     request.onabort = () => console.log("Submit cancelled")
-
-    // Display the progress bar
-    setProgressBarVisible(true)
+    request.onload = () => console.log(request.responseText)
 
     // Send the request
     request.open("POST", "http://localhost:8080/upload")
