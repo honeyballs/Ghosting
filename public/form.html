@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="./style.css"> 
+    <link rel="stylesheet" href="./style.css">
 
     <title>Ghosting</title>
 </head>
+
 <body>
-    <form enctype="multipart/form-data">
-        <input type="file" name="zip" id="zip" accept=".txt" onchange="fileChange()">
-        <input type="button" id="submit" value="Upload" onclick="submitForm()">
-    </form>
-    <progress max="100" value="0" class="invisible"></progress>
+    <div id="content-div">
+        <div id="form-div">
+            <h1>Ghosting</h1>
+
+            <div id="form-content">
+                <p>Zip your web project and upload it here. You will receive a link to your hosted site!</p>
+                <form enctype="multipart/form-data">
+                    <label for="zip">Choose .zip</label>
+                    <input type="file" name="zip" id="zip" accept=".txt" onchange="fileChange()" class="invisible">
+                    <progress max="100" value="0" class="invisible"></progress>
+                    <input type="button" id="submit" value="Upload" onclick="submitForm()">
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
     <script src="./main.js"></script>
 </body>
+
 </html>
