@@ -41,7 +41,7 @@ function submitForm() {
     request.onload = () => console.log(request.responseText)
 
     // Send the request
-    request.open("POST", "http://localhost:8080/upload")
+    request.open("POST", "/upload")
     request.send(form)
 
 }

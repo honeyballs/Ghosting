@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Ghosting/bundle"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -29,7 +30,7 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	// Create a file to write the upload to
-	upload, err := ioutil.TempFile("uploads", "program-*.txt")
+	upload, err := ioutil.TempFile("uploads", "program-*.zip")
 	if err != nil {
 		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -62,6 +63,7 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/upload", handleForm)
+	http.Handle("/", http.FileServer(bundle.Bundle))
 	fmt.Println("Server running on Port 8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

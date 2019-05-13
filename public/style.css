@@ -89,6 +89,7 @@ input {
     -webkit-box-shadow: 13px 13px 30px -12px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 13px 13px 30px -12px rgba(0, 0, 0, 0.75);
     box-shadow: 13px 13px 30px -12px rgba(0, 0, 0, 0.75);
+    outline: none;
 }
 
 input:hover {
