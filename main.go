@@ -22,6 +22,13 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if header.Header.Get("Content-Type") != "application/zip" {
+		log.Println("Wrong content type")
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "Wrong content type. Only .zip files are accepted")
+		return
+	}
+
 	log.Printf("Uploaded File: %+v\n", header.Filename)
 	log.Printf("File Size: %+v\n", header.Size)
 	log.Printf("MIME Header: %+v\n", header.Header)
