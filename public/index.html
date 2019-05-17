@@ -21,6 +21,8 @@
                 <form enctype="multipart/form-data">
                     <label for="zip">Choose .zip</label>
                     <input type="file" name="zip" id="zip" accept=".zip" onchange="fileChange()" class="invisible">
+                    <p id="error" class="invisible"></p>
+                    <p id="filename" class="invisible"></p>
                     <progress max="100" value="0" class="invisible"></progress>
                     <input type="button" id="submit" value="Upload" onclick="submitForm()">
                 </form>

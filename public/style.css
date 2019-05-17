@@ -73,7 +73,6 @@ progress {
     width: 100%;
     height: 20px;
     color: #45aaf2;
-    margin: 10px 0;
 }
 
 input {
@@ -92,13 +91,29 @@ input {
     outline: none;
 }
 
-input:hover {
+input:hover :not(disabled){
     -webkit-box-shadow: initial;
     -moz-box-shadow: initial;
     box-shadow: initial;
 }
 
+input:disabled {
+    background: lightgray;
+}
+
 
 .invisible {
     display: none;
+}
+
+#filename {
+    margin: 20px 0 5px;
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+#error {
+    color: #eb3b5a;
+    margin: 20px 0;
+    align-self: flex-start;
 }
